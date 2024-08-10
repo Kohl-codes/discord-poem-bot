@@ -39,10 +39,10 @@ A Discord bot that fetches and sends random poems in response to commands. Built
 
 1. **Clone the repository**
 
-   ```bash
-   git clone https://github.com/Kohl-codes/discord-poem-bot.git
-   cd discord-poem-bot
-   ```
+```bash
+git clone https://github.com/Kohl-codes/discord-poem-bot.git
+cd discord-poem-bot
+```
 
 
 2. Install dependencies
