@@ -67,11 +67,11 @@ DISCORD_GUILD_ID=your-discord-guild-id
 node bot.js
 ```
 
-##Commands
+## Commands
 
 - /poem - Fetches and displays a random poem.
 
-##Contributing
+## Contributing
 
 1. Fork the repository
 
@@ -97,10 +97,10 @@ git push origin feature/your-feature
 
 Visit the repository on GitHub and open a pull request.
 
-##License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-##Contact
+## Contact
 For questions or feedback, please open an issue on the GitHub repository or contact me directly at mikaorador@gmail.com.
 
 ### How to Customize
