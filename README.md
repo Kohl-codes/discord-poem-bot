@@ -55,11 +55,10 @@ A Discord bot that fetches and sends random poems in response to commands. Built
 
 In the root of the project, create a .env file and add your Discord bot token:
 
-    ```
     DISCORD_TOKEN=your-discord-bot-token
     DISCORD_CLIENT_ID=your-discord-client-id
     DISCORD_GUILD_ID=your-discord-guild-id
-    ```
+
 
 4. Start the bot
 
