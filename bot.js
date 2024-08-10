@@ -14,6 +14,8 @@ const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
 const guildId = process.env.DISCORD_GUILD_ID;
 
+const MAX_CHAR_LIMIT = 2000; // Maximum number of characters for a Discord message
+
 async function fetchRandomPoem() {
     try {
         const response = await axios.get('https://poetrydb.org/random/1');
@@ -56,9 +58,9 @@ client.on('interactionCreate', async interaction => {
         try {
             let randomPoem = await fetchRandomPoem();
 
-            // Truncate if the poem exceeds 2000 characters
-            if (randomPoem.length > 2000) {
-                randomPoem = randomPoem.substring(0, 2000) + '...';
+            // Truncate if the poem exceeds the character limit
+            if (randomPoem.length > MAX_CHAR_LIMIT) {
+                randomPoem = randomPoem.substring(0, MAX_CHAR_LIMIT - 3) + '...';
             }
 
             await interaction.reply(randomPoem);
