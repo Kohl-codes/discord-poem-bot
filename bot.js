@@ -2,12 +2,12 @@ const { Client, GatewayIntentBits, REST, Routes } = require('discord.js');
 require('dotenv').config();
 const axios = require('axios');
 
-const client = new Client({ 
+const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds, 
-        GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent
-    ] 
+    ]
 });
 
 const token = process.env.DISCORD_TOKEN;
@@ -42,7 +42,7 @@ client.once('ready', () => {
             });
             console.log('Successfully reloaded application (/) commands.');
         } catch (error) {
-            console.error(error);
+            console.error('Error reloading commands:', error);
         }
     })();
 });
@@ -53,14 +53,19 @@ client.on('interactionCreate', async interaction => {
     const { commandName } = interaction;
 
     if (commandName === 'poem') {
-        let randomPoem = await fetchRandomPoem();
-        
-        // Truncate if the poem exceeds 2000 characters
-        if (randomPoem.length > 2000) {
-            randomPoem = randomPoem.substring(0, 2000) + '...';
-        }
+        try {
+            let randomPoem = await fetchRandomPoem();
 
-        await interaction.reply(randomPoem);
+            // Truncate if the poem exceeds 2000 characters
+            if (randomPoem.length > 2000) {
+                randomPoem = randomPoem.substring(0, 2000) + '...';
+            }
+
+            await interaction.reply(randomPoem);
+        } catch (error) {
+            console.error('Error handling interaction:', error);
+            await interaction.reply('An error occurred while fetching the poem.');
+        }
     }
 });
 
