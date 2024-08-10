@@ -39,33 +39,33 @@ A Discord bot that fetches and sends random poems in response to commands. Built
 
 1. **Clone the repository**
 
-```bash
-git clone https://github.com/Kohl-codes/discord-poem-bot.git
-cd discord-poem-bot
-```
+    ```bash
+    git clone https://github.com/Kohl-codes/discord-poem-bot.git
+    cd discord-poem-bot
+    ```
 
 
 2. Install dependencies
 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
 3. Create a .env file
 
 In the root of the project, create a .env file and add your Discord bot token:
 
-```
-DISCORD_TOKEN=your-discord-bot-token
-DISCORD_CLIENT_ID=your-discord-client-id
-DISCORD_GUILD_ID=your-discord-guild-id
-```
+    ```
+    DISCORD_TOKEN=your-discord-bot-token
+    DISCORD_CLIENT_ID=your-discord-client-id
+    DISCORD_GUILD_ID=your-discord-guild-id
+    ```
 
 4. Start the bot
 
-```bash
-node bot.js
-```
+    ```bash
+    node bot.js
+    ```
 
 ## Commands
 
@@ -77,21 +77,21 @@ node bot.js
 
 2. Create a feature branch
 
-```bash
-git checkout -b feature/your-feature
-```
+    ```bash
+    git checkout -b feature/your-feature
+    ```
 
 3. Commit your changes
 
-```bash
-git commit -m "Add new feature"
-```
+    ```bash
+    git commit -m "Add new feature"
+    ```
 
 4. Push to the branch
 
-```bash
-git push origin feature/your-feature
-```
+    ```bash
+    git push origin feature/your-feature
+    ```
 
 5. Create a pull request
 
