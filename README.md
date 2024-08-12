@@ -7,9 +7,17 @@
 <a href="https://img.shields.io/github/license/Kohl-codes/discord-poem-bot"><img src="https://img.shields.io/github/license/Kohl-codes/discord-poem-bot" alt="License"></a>
 </p>
 
-# Discord Poem Bot
+# **Discord Poem Bot**
 
-A Discord bot that fetches and sends random poems in response to commands. Built using [discord.js](https://discord.js.org/) and [PoetryDB API](https://poetrydb.org/).
+Welcome to **Mr. Poem**, your go-to Discord bot for a touch of classical literature. Mr. Poem fetches and sends random poems directly to your server using simple commands.
+
+## **How to Use**
+
+1. **Invite Mr. Poem to Your Server**:
+   [Click here to invite Mr. Poem](https://discord.com/oauth2/authorize?client_id=1271447378809061408&permissions=277025462272&integration_type=0&scope=applications.commands+bot)
+
+2. **Commands**:
+   - `/poem` - Fetches and displays a random classical poem.
 
 ## Languages Used
 
