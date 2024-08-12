@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@discordjs/rest": "^2.3.0",
+    "@google-cloud/translate": "^8.3.0",
     "axios": "^1.7.3",
     "discord-api-types": "^0.37.93",
     "discord.js": "^14.15.3",

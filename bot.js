@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, REST, Routes } = require('discord.js');
 require('dotenv').config();
 const axios = require('axios');
+const translateText = require('./translate'); // Import translation function
 
 const client = new Client({
     intents: [
@@ -12,6 +13,7 @@ const client = new Client({
 
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
+const guildId = process.env.DISCORD_GUILD_ID;
 
 const MAX_CHAR_LIMIT = 2000; // Maximum number of characters for a Discord message
 
@@ -26,30 +28,33 @@ async function fetchRandomPoem() {
     }
 }
 
-client.once('ready', async () => {
+client.once('ready', () => {
     console.log('Bot is online!');
-    
-    // Register commands for all guilds
-    const guilds = client.guilds.cache.map(guild => guild.id);
+    // Register commands
     const rest = new REST({ version: '10' }).setToken(token);
-    
     (async () => {
         try {
             console.log('Started refreshing application (/) commands.');
-            
-            const commands = [
-                {
-                    name: 'poem',
-                    description: 'Get a random poem',
-                },
-            ];
-            
-            for (const guildId of guilds) {
-                await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
-                    body: commands,
-                });
-            }
-            
+            await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+                body: [
+                    {
+                        name: 'poem',
+                        description: 'Get a random poem',
+                    },
+                    {
+                        name: 'poemtranslate',
+                        description: 'Get a translated random poem',
+                        options: [
+                            {
+                                name: 'language',
+                                type: 3, // STRING
+                                description: 'Language code (e.g., en, es, fr)',
+                                required: true,
+                            },
+                        ],
+                    },
+                ],
+            });
             console.log('Successfully reloaded application (/) commands.');
         } catch (error) {
             console.error('Error reloading commands:', error);
@@ -75,6 +80,23 @@ client.on('interactionCreate', async interaction => {
         } catch (error) {
             console.error('Error handling interaction:', error);
             await interaction.reply('An error occurred while fetching the poem.');
+        }
+    } else if (commandName === 'poemtranslate') {
+        const languageCode = interaction.options.getString('language');
+
+        try {
+            let randomPoem = await fetchRandomPoem();
+            let translatedPoem = await translateText(randomPoem, languageCode);
+
+            // Truncate if the poem exceeds the character limit
+            if (translatedPoem.length > MAX_CHAR_LIMIT) {
+                translatedPoem = translatedPoem.substring(0, MAX_CHAR_LIMIT - 3) + '...';
+            }
+
+            await interaction.reply(translatedPoem);
+        } catch (error) {
+            console.error('Error handling interaction:', error);
+            await interaction.reply('An error occurred while translating the poem.');
         }
     }
 });
