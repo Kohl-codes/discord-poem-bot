@@ -12,7 +12,6 @@ const client = new Client({
 
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
-const guildId = process.env.DISCORD_GUILD_ID;
 
 const MAX_CHAR_LIMIT = 2000; // Maximum number of characters for a Discord message
 
@@ -27,21 +26,30 @@ async function fetchRandomPoem() {
     }
 }
 
-client.once('ready', () => {
+client.once('ready', async () => {
     console.log('Bot is online!');
-    // Register commands
+    
+    // Register commands for all guilds
+    const guilds = client.guilds.cache.map(guild => guild.id);
     const rest = new REST({ version: '10' }).setToken(token);
+    
     (async () => {
         try {
             console.log('Started refreshing application (/) commands.');
-            await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
-                body: [
-                    {
-                        name: 'poem',
-                        description: 'Get a random poem',
-                    },
-                ],
-            });
+            
+            const commands = [
+                {
+                    name: 'poem',
+                    description: 'Get a random poem',
+                },
+            ];
+            
+            for (const guildId of guilds) {
+                await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+                    body: commands,
+                });
+            }
+            
             console.log('Successfully reloaded application (/) commands.');
         } catch (error) {
             console.error('Error reloading commands:', error);
