@@ -1,4 +1,4 @@
-<p align="center"><a href="https://discord.com" target="_blank"><img src="https://camo.githubusercontent.com/3e7d1de789499a54fb12ba6eb032e4204d081a8bb4eac0a196d917fd36329b1a/68747470733a2f2f7669676e657474652e77696b69612e6e6f636f6f6b69652e6e65742f7468652d6d696e6572732d686176656e2d70726f6a6563742f696d616765732f642f64642f446973636f72642e706e672f7265766973696f6e2f6c61746573743f63623d3230313730333038303333353436" width="200" alt="Discord Logo"></a></p>
+<p align="center"><a href="https://discord.com" target="_blank"><img src="https://www.svgrepo.com/show/353655/discord-icon.svg" width="200" alt="Discord Logo"></a></p>
 
 <p align="center">
 <a href="https://img.shields.io/github/languages/top/Kohl-codes/discord-poem-bot"><img src="https://img.shields.io/github/languages/top/Kohl-codes/discord-poem-bot" alt="Top Language"></a>
